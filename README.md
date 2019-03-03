@@ -1,5 +1,4 @@
 # How to Get Started
-test1
 Your own branch is already created, named `member/<your-name>`. 
 
 Please fork **this** repo, and, in your **forked** repo, create a branch with the name of `<week-number>/<topic-name>` for each week's assignment. For example, your week 2 branch should be called `week2/solutions`.
