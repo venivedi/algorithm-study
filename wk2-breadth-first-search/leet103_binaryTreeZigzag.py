@@ -13,33 +13,22 @@ Created on Wed Apr  3 22:38:56 2019
 #         self.val = x
 #         self.left = None
 #         self.right = None
-from collections import deque
+
 class Solution(object):
-    def zigzagLevelOrder(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[List[int]]
-        """
-        if not root:
-            return []
-        cur_layer = deque([root])
-        result = []
-        LtoR = 1
-        while len(cur_layer)>0:
-            c_layer_val = []    
-            next_layer = deque([])
-            for ii in range(len(cur_layer)):
-                cur_node = cur_layer.popleft()
-                c_layer_val.append(cur_node.val)
-                if cur_node.left != None:
-                    next_layer.append(cur_node.left)
-                if cur_node.right != None:
-                    next_layer.append(cur_node.right)
-                    
-            if LtoR>0:
-                result.append(c_layer_val)
-            else:
-                result.append(c_layer_val[::-1])
-            LtoR *= -1
-            cur_layer = next_layer
-        return result
+def zigzagLevelOrder(self, root):
+    """
+    :type root: TreeNode
+    :rtype: List[List[int]]
+    """
+    if not root: return []
+    res, temp, stack, flag=[], [], [root], 1
+    while stack:
+        for i in xrange(len(stack)):
+            node=stack.pop(0)
+            temp+=[node.val]
+            if node.left: stack+=[node.left]
+            if node.right: stack+=[node.right]
+        res+=[temp[::flag]]
+        temp=[]
+        flag*=-1
+    return res
